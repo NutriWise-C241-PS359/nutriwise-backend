@@ -1,0 +1,27 @@
+{
+    "transformers": [
+        {
+            "name": "min_max_scaler",
+            "transformer_type": "MinMaxScaler",
+            "features": [
+                "Age",
+                "Height",
+                "Weight"
+            ]
+        },
+        {
+            "name": "one_hot_encoder",
+            "transformer_type": "OneHotEncoder",
+            "features": [
+                "Gender"
+            ]
+        },
+        {
+            "name": "ordinal_encoder",
+            "transformer_type": "OrdinalEncoder",
+            "features": [
+                "Activities"
+            ]
+        }
+    ]
+}

@@ -1,4 +1,3 @@
-import { where } from 'sequelize';
 import Users from '../model/usermodel.js'; // Pastikan path dan ekstensi file sudah benar
 import jwt from 'jsonwebtoken';
 

@@ -15,7 +15,7 @@ export const getUsers = async (req, res) => {
     if (loggedInUser) {
       res.status(200).json({
         status: 'Success',
-        message: `User with username ${username} has exist!`,
+        user: loggedInUser,
       });
     } else {
       res.status(404).json({
@@ -44,8 +44,8 @@ export const Register = async (req, res) => {
 
     if (existingUser) {
       // Jika username sudah ada, kembalikan error dengan status 400
-      return res.status(200).json({
-        status: 'Success',
+      return res.status(400).json({
+        status: 'Error',
         message: `User with username ${username} already exist!`,
       });
     }
@@ -272,9 +272,9 @@ export const recFood = async (req, res) => {
     const recommendations = await recommendFood(mealMacros);
     res.json(recommendations);
   } catch (error) {
-    res.status(500).json({ 
-      status: "Error",
-      error: error.message 
+    res.status(500).json({
+      status: 'Error',
+      error: error.message,
     });
   }
 };
