@@ -3,7 +3,7 @@ import pool from '../config/Database.js';
 async function recommendFood(mealMacros) {
   try {
     // Ambil semua data makanan dari database
-    const [data] = await pool.query('SELECT id, name, carbohydrates, protein, fats, energy AS calorie FROM food');
+    const [data] = await pool.query('SELECT id, name, carbohydrates, protein, fats, energy AS calorie FROM df');
     // console.log(data);
 
     // Hitung jarak (distance) untuk setiap makanan dalam foodDatabase

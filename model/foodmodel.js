@@ -4,7 +4,7 @@ import db from '../config/Database.js';
 const { DataTypes } = Sequelize;
 
 const Foods = db.define(
-  'food',
+  'df',
   {
     id: {
       type: DataTypes.INTEGER,
@@ -40,6 +40,5 @@ const Foods = db.define(
     freezeTableName: true,
   }
 );
-
 
 export default Foods;
