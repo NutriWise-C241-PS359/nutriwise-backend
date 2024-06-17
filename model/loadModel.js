@@ -1,4 +1,3 @@
-import fs from 'fs';
 import tf from '@tensorflow/tfjs-node';
 import axios from 'axios';
 

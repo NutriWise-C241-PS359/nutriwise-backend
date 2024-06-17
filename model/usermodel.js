@@ -16,17 +16,17 @@ const Users = db.define(
       type: DataTypes.STRING,
     },
     usia: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
     },
     gender: {
       type: DataTypes.BOOLEAN,
     },
     tinggibadan: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
     },
     beratbadan: {
-      type: DataTypes.DOUBLE,
-    },
+      type: DataTypes.STRING,
+    },  
     aktivitas: {
       type: DataTypes.STRING,
     },
