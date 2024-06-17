@@ -248,12 +248,13 @@ export const predictCal = async (req, res) => {
 
     res.status(200).json({
       status: 'Success',
+      message: 'Calculate calorie successfully',
       result,
     });
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      error: error.message,
+      message: error.message,
     });
   }
 };
@@ -270,11 +271,15 @@ export const recFood = async (req, res) => {
     };
 
     const recommendations = await recommendFood(mealMacros);
-    res.json(recommendations);
+    res.status(200).json({
+      status: 'Success',
+      message: 'Food recommendation',
+      result: recommendations
+    });
   } catch (error) {
     res.status(500).json({
       status: 'Error',
-      error: error.message,
+      message: error.message,
     });
   }
 };
