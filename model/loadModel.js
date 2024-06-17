@@ -1,5 +1,6 @@
 import fs from 'fs';
 import tf from '@tensorflow/tfjs-node';
+import axios from 'axios';
 
 let model;
 let scalingConfig;
@@ -21,8 +22,16 @@ const ordinalCategories = {
 async function loadScalingConfig() {
   if (!scalingConfig) {
     try {
-      const rawData = fs.readFileSync('model/column_transformer_config.json');
-      scalingConfig = JSON.parse(rawData);
+      // Ganti dengan URL yang merujuk ke file JSON konfigurasi scaling
+      const scalingConfigUrl = process.env.SCALING_CONFIG;
+
+      if (!scalingConfigUrl) {
+        throw new Error('SCALING_CONFIG_URL environment variable is not set.');
+      }
+
+      const response = await axios.get(scalingConfigUrl);
+
+      scalingConfig = response.data;
       console.log('Scaling configuration loaded successfully.');
     } catch (error) {
       console.error('Error loading scaling configuration:', error);
@@ -35,7 +44,7 @@ async function loadScalingConfig() {
 async function loadModel() {
   if (!model) {
     try {
-      model = await tf.loadLayersModel('file://model/model.json');
+      model = await tf.loadLayersModel(process.env.MODEL_URL);
       console.log(model.summary());
       console.log('Model loaded successfully.');
     } catch (error) {
