@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
 import db from '../config/Database.js';
 import Food from './foodmodel.js';
+import Users from "./usermodel.js";
 
 const { DataTypes } = Sequelize;
 
@@ -25,6 +26,14 @@ const History = db.define(
     date: {
       type: DataTypes.STRING,
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Users,
+        key: 'id',
+      },
+      allowNull: false,
+    },
   },
   {
     freezeTableName: true,
@@ -33,5 +42,8 @@ const History = db.define(
 
 Food.hasMany(History, { foreignKey: 'foodID' });
 History.belongsTo(Food, { as: 'food', foreignKey: 'foodID' });
+
+Users.hasMany(History, { foreignKey: 'userId' });
+History.belongsTo(Users, { foreignKey: 'userId' });
 
 export default History;

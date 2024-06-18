@@ -14,7 +14,7 @@ const Foods = db.define(
     food: {
       type: DataTypes.STRING,
     },
-    foodTranslated: {
+    name: {
       type: DataTypes.STRING,
     },
     carbohydrates: {
@@ -24,7 +24,7 @@ const Foods = db.define(
       type: DataTypes.DOUBLE,
     },
     fats: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.DOUBLE,
     },
     energy: {
       type: DataTypes.DOUBLE,

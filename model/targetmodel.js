@@ -1,30 +1,33 @@
 import { Sequelize } from 'sequelize';
 import db from '../config/Database.js';
+import Users from "./usermodel.js";
 
 const { DataTypes } = Sequelize;
 
 const Target = db.define(
   'target',
   {
-    id: {
-      type: DataTypes.INTEGER,
-    },
     targetberatbadan: {
       type: DataTypes.DOUBLE,
     },
-    userID: {
+    userId: {
       type: DataTypes.INTEGER,
+      references: {
+        model: Users,
+        key: 'id',
+      },
+      allowNull: false,
     },
-    startdate: {
-      type: DataTypes.DATE,
-    },
-    enddate: {
-      type: DataTypes.DATE,
+    duration: {
+      type: DataTypes.INTEGER,
     },
   },
   {
     freezeTableName: true,
   }
 );
+
+Users.hasMany(Target, { foreignKey: 'userId' });
+Target.belongsTo(Users, { foreignKey: 'userId' });
 
 export default Target;

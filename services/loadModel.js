@@ -44,7 +44,7 @@ async function loadModel() {
   if (!model) {
     try {
       model = await tf.loadLayersModel(process.env.MODEL_URL);
-      console.log(model.summary());
+      // console.log(model.summary());
       console.log('Model loaded successfully.');
     } catch (error) {
       console.error('Error loading model:', error);
@@ -124,10 +124,10 @@ async function transformInput(weight, height, age, gender, activityLevel) {
   return input;
 }
 
-async function predictCalories(weight, height, age, gender, activityLevel) {
+async function predictCalories(beratbadan, tinggibadan, usia, gender, activitas) {
   await loadModel();
 
-  const transformedInput = await transformInput(weight, height, age, gender, activityLevel);
+  const transformedInput = await transformInput(beratbadan, tinggibadan, usia, gender, activitas);
   const inputTensor = tf.tensor2d([transformedInput]);
 
   const prediction = model.predict(inputTensor);

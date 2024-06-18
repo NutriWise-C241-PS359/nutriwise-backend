@@ -8,27 +8,39 @@ const Users = db.define(
   {
     name: {
       type: DataTypes.STRING,
-    },
-    username: {
+    },username: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     password: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     usia: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
+      defaultValue: 0, 
+      allowNull: true, 
     },
     gender: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false, 
+      allowNull: true, 
     },
+
     tinggibadan: {
-      type: DataTypes.STRING,
+      type: DataTypes.DOUBLE,
+      defaultValue: 0, 
+      allowNull: true, 
     },
     beratbadan: {
-      type: DataTypes.STRING,
-    },  
+      type: DataTypes.DOUBLE,
+      defaultValue: 0, 
+      allowNull: true, 
+    },
     aktivitas: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: true, 
     },
     refresh_token: {
       type: DataTypes.TEXT,
